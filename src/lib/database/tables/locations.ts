@@ -14,7 +14,7 @@ export const locations = sqliteTable(
       autoIncrement: true,
     }),
 
-    locationId: integer("location_id", { mode: "number" })
+    accountId: integer("account_id", { mode: "number" })
       .notNull()
       .references(() => accounts.id),
     name: text("name", { mode: "text" }).notNull(),
@@ -33,3 +33,21 @@ export const locations = sqliteTable(
     };
   },
 );
+
+export const locationGrids = sqliteTable("location_grids", {
+  id: integer("id", { mode: "number" }).primaryKey({
+    autoIncrement: true,
+  }),
+
+  locationId: integer("location_id", { mode: "number" })
+    .notNull()
+    .references(() => locations.id),
+  sizeX: integer("size_x", { mode: "number" }),
+  sizeY: integer("size_y", { mode: "number" }),
+
+  createdAt: integer("created_at", { mode: "timestamp" })
+    .notNull()
+    .default(sql`CURRENT_TIMESTAMP`),
+  updatedAt: integer("updated_at", { mode: "timestamp" }),
+  deletedAt: integer("deleted_at", { mode: "timestamp" }),
+});
