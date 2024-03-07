@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Link from "next/link";
-import { auth } from "@/lib/authentication";
+import { auth, signIn, signOut } from "@/lib/authentication";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -28,14 +28,28 @@ export default async function RootLayout({
             </div>
             <div className="flex flex-row justify-end">
               {session ? (
-                <>
-                  <span className="p-1">{session.user.email}</span>
-                  <Link href="/api/auth/signout" className="p-1">
+                <form
+                  action={async () => {
+                    "use server";
+                    await signOut({ redirectTo: "/" });
+                  }}
+                  className="p-1"
+                >
+                  <button className="text-sm border border-gray-300 p-1 rounded">
                     Sign out
-                  </Link>
-                </>
+                  </button>
+                </form>
               ) : (
-                <Link href="/api/auth/signin">Sign in</Link>
+                <form
+                  action={async () => {
+                    "use server";
+                    await signIn("google", { redirectTo: "/" });
+                  }}
+                >
+                  <button className="text-sm border border-gray-300 p-1 rounded">
+                    Sign in
+                  </button>
+                </form>
               )}
             </div>
           </nav>
