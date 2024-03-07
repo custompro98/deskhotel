@@ -4,10 +4,10 @@ const env = z
   .object({
     DATABASE_AUTH_TOKEN: z.string(),
     DATABASE_URL: z.string(),
-    // GOOGLE_CLIENT_ID: z.string(),
-    // GOOGLE_CLIENT_SECRET: z.string(),
-    // NEXTAUTH_SECRET: z.string(),
-    // NEXT_PUBLIC_HOSTNAME: z.string(),
+    GOOGLE_CLIENT_ID: z.string(),
+    GOOGLE_CLIENT_SECRET: z.string(),
+    NEXTAUTH_SECRET: z.string(),
+    NEXT_PUBLIC_HOSTNAME: z.string(),
   })
   .safeParse(process.env);
 
