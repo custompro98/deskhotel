@@ -5,10 +5,10 @@ import {
   text,
   uniqueIndex,
 } from "drizzle-orm/sqlite-core";
-import { locations } from "./locations";
+import { accounts } from "./accounts";
 
-export const desks = sqliteTable(
-  "desks",
+export const locations = sqliteTable(
+  "locations",
   {
     id: integer("id", { mode: "number" }).primaryKey({
       autoIncrement: true,
@@ -16,10 +16,8 @@ export const desks = sqliteTable(
 
     locationId: integer("location_id", { mode: "number" })
       .notNull()
-      .references(() => locations.id),
+      .references(() => accounts.id),
     name: text("name", { mode: "text" }).notNull(),
-    xCoordinate: integer("x_coordinate", { mode: "number" }).notNull(),
-    yCoordinate: integer("y_coordinate", { mode: "number" }).notNull(),
 
     createdAt: integer("created_at", { mode: "timestamp" })
       .notNull()
@@ -29,7 +27,7 @@ export const desks = sqliteTable(
   },
   (table) => {
     return {
-      desksNamePartialIdx: uniqueIndex("desks_name_partial_idx")
+      locationsNamePartialIdx: uniqueIndex("locations_name_partial_idx")
         .on(table.name)
         .where(sql`deleted_at IS NULL`),
     };
