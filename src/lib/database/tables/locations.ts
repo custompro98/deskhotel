@@ -43,8 +43,8 @@ export const locationGrids = sqliteTable("location_grids", {
   locationId: integer("location_id", { mode: "number" })
     .notNull()
     .references(() => locations.id),
-  sizeX: integer("size_x", { mode: "number" }),
-  sizeY: integer("size_y", { mode: "number" }),
+  sizeX: integer("size_x", { mode: "number" }).notNull(),
+  sizeY: integer("size_y", { mode: "number" }).notNull(),
 
   createdAt: integer("created_at", { mode: "timestamp" })
     .notNull()
