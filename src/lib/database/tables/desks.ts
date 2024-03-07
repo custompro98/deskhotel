@@ -18,8 +18,6 @@ export const desks = sqliteTable(
       .notNull()
       .references(() => locations.id),
     name: text("name", { mode: "text" }).notNull(),
-    xCoordinate: integer("x_coordinate", { mode: "number" }).notNull(),
-    yCoordinate: integer("y_coordinate", { mode: "number" }).notNull(),
 
     createdAt: integer("created_at", { mode: "timestamp" })
       .notNull()

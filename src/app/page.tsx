@@ -1,3 +1,5 @@
-export default function Home() {
-  return <div>Hi</div>;
+function Coordinate() {
+  return <div className=""></div>;
 }
+
+export default function Home() {}
