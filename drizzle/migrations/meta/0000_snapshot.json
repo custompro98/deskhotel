@@ -1,7 +1,7 @@
 {
   "version": "5",
   "dialect": "sqlite",
-  "id": "20daef9c-340f-4a65-89e2-9713d2a69167",
+  "id": "184a0c1e-0370-488c-aa84-bcc26a48b659",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "tables": {
     "account_users": {
@@ -176,8 +176,8 @@
         }
       },
       "indexes": {
-        "email_partial_idx": {
-          "name": "email_partial_idx",
+        "users_email_partial_idx": {
+          "name": "users_email_partial_idx",
           "columns": [
             "email"
           ],

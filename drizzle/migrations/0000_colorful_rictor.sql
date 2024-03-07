@@ -26,4 +26,4 @@ CREATE TABLE `users` (
 	`deleted_at` integer
 );
 --> statement-breakpoint
-CREATE UNIQUE INDEX `email_partial_idx` ON `users` (`email`) WHERE deleted_at IS NULL;
+CREATE UNIQUE INDEX `users_email_partial_idx` ON `users` (`email`) WHERE deleted_at IS NULL;

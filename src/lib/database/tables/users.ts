@@ -24,7 +24,7 @@ export const users = sqliteTable(
   },
   (table) => {
     return {
-      emailPartialIdx: uniqueIndex("email_partial_idx")
+      usersEmailPartialIdx: uniqueIndex("users_email_partial_idx")
         .on(table.email)
         .where(sql`deleted_at IS NULL`),
     };

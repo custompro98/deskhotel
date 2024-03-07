@@ -29,7 +29,7 @@ export const desks = sqliteTable(
   },
   (table) => {
     return {
-      emailPartialIdx: uniqueIndex("desks_name_partial_idx")
+      desksNamePartialIdx: uniqueIndex("desks_name_partial_idx")
         .on(table.name)
         .where(sql`deleted_at IS NULL`),
     };
