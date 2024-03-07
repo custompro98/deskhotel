@@ -35,7 +35,7 @@ export default async function RootLayout({
                   }}
                   className="p-1"
                 >
-                  <button className="text-sm border border-gray-300 p-1 rounded">
+                  <button className="text-sm border border-flame-500 p-1 rounded">
                     Sign out
                   </button>
                 </form>
@@ -46,7 +46,7 @@ export default async function RootLayout({
                     await signIn("google", { redirectTo: "/" });
                   }}
                 >
-                  <button className="text-sm border border-gray-300 p-1 rounded">
+                  <button className="text-sm border border-flame-500 bg-flame-300 p-1 rounded">
                     Sign in
                   </button>
                 </form>
