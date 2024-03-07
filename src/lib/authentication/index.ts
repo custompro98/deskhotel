@@ -22,7 +22,7 @@ export enum Provider {
 
 export const {
   handlers: { GET, POST },
-  auth: authentication,
+  auth,
   signIn,
   signOut,
 } = NextAuth({
