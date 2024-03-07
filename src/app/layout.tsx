@@ -20,7 +20,7 @@ export default async function RootLayout({
 
   return (
     <html lang="en">
-      <body className={`${inter.className}`}>
+      <body className={`${inter.className} flex flex-col h-screen`}>
         <header>
           <nav className="flex flex-row justify-between h-16 p-2 items-center">
             <div className="flex flex-row justify-start">
@@ -40,8 +40,8 @@ export default async function RootLayout({
             </div>
           </nav>
         </header>
-        <main className="p-2">{children}</main>
-        <footer className="p-2">
+        <main className="p-2 flex-grow">{children}</main>
+        <footer className="p-2 mx-auto">
           <Link href="https://github.com/custompro98">custompro98</Link>
         </footer>
       </body>
