@@ -1,10 +1,5 @@
 import { Coordinate } from "@/components/Coordinate";
-import {
-  createLocation,
-  createWall,
-  deleteWall,
-  getLocation,
-} from "@/lib/repository/location";
+import { createLocation, getLocation } from "@/lib/repository/location";
 import { isPresent } from "@/lib/util";
 import { revalidatePath } from "next/cache";
 
@@ -45,17 +40,10 @@ export default async function Home() {
             return (
               <Coordinate
                 key={`${x},${y}`}
-                handleClick={async () => {
-                  "use server";
-                  if (isOccupied) {
-                    await deleteWall(location.grid.id, x, y);
-                  } else {
-                    await createWall(location.grid.id, x, y);
-                  }
-
-                  revalidatePath("/");
-                }}
                 occupied={isOccupied}
+                gridId={location.grid.id}
+                posX={x}
+                posY={y}
               />
             );
           })}
