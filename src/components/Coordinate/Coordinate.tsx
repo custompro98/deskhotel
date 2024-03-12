@@ -1,7 +1,8 @@
+"use client";
+
 import classNames from "classnames";
+import { useState, useTransition } from "react";
 import { toggleCoordinate } from "./actions";
-import { revalidatePath } from "next/cache";
-import { useState } from "react";
 
 interface Props {
   gridId: number;
@@ -11,30 +12,32 @@ interface Props {
 }
 
 export function Coordinate({ gridId, posX, posY, occupied }: Props) {
+  const [, startTransition] = useTransition();
+  const [isOccupied, setIsOccupied] = useState(occupied);
+
   const classes = classNames({
     "h-16": true,
     "w-16": true,
     border: true,
     "border-black": true,
-    "bg-black": occupied,
+    "bg-black": isOccupied,
   });
 
   return (
-    <form
-      action={async () => {
-        "use server";
+    <div
+      className={classes}
+      onClick={() => {
+        startTransition(async () => {
+          setIsOccupied(!isOccupied);
 
-        await toggleCoordinate({
-          gridId,
-          posX,
-          posY,
-          isCurrentlyOccupied: occupied,
+          await toggleCoordinate({
+            gridId,
+            posX,
+            posY,
+            isCurrentlyOccupied: occupied,
+          });
         });
-
-        revalidatePath("/");
       }}
-    >
-      <button className={classes}></button>
-    </form>
+    ></div>
   );
 }
